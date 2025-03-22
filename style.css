@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap');
+:root {
+  --primary-color: #f55951;
+  --secondary-color: #361d32;
+  --white:#ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+*, ::before,::after {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Rubik';
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--white);
+    background-color:#543c52;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+img {
+    max-width: 100%;
+    vertical-align: middle;
+}
+.site {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.products .item {
+    position: relative;
+    max-width: 350px;
+    padding: 30px;
+    background-color: var(--secondary-color);
+    box-shadow: 0 10px 36px 0 rgb(0 0 0 / 16%);
+}
+.products .item .brand {
+    width: 60px;
+    height: 40px;
+    background: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA1MTIgNTEyIj48cGF0aCBkPSJtMjU1Ljk0MyAyMzYuMzA1LTc5LjI4MyAyMC44MTNjLTI4LjAwNCA2Ljk0Ny01Mi40OTggMTYuMjA4LTc2LjEwMSA4LjEtMzIuMDg0LTEzLjg5LTMxLjUxMS01MC4wMzktNy41OTEtODguNDk3LTQyLjI4OCAzNS4wMDEtMTE4LjM5IDE0Ni45LTE1LjQ2NiAxNTguMjA0IDEzLjExMiAxLjcyNyAzNi40NTQtMi44OCA2MS44MS0xMy41NzlsMTE2LjYzMi00OC4wMDIgMjMwLjA1NS05NC4zMTYtMjAxLjQ3MSA0OS43NTktMjguNTg1IDcuNTE4eiIgZmlsbD0iI2ZmZmZmZiIgY2xhc3M9ImZpbGwtMDAwMDAwIj48L3BhdGg+PC9zdmc+');
+    background-size: cover;
+    background-position: center;
+}
+.products .item .title h2 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+.products .item:hover .image img {
+    animation: motionProduct 2s infinite;
+}
+@keyframes motionProduct {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+}
+.products .item .meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+.products .item .size {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 30px;
+}
+.products .item .size label {
+    width: 36px;
+    height: 36px;
+    background-color: var(--primary-color);
+    color: var(--white);
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform .3s, box-shadow .3s, color .3s, background-color .3s;
+}
+.products .item .size input:checked + label {
+    color: var(--primary-color);
+    background-color: var(--white);
+    box-shadow: inset 0 0 0 3px var(--primary-color);
+}
+.products .item .size input {
+    display: none;
+}
+.products .item .price {
+    font-size: 24px;
+    font-weight: 300;
+}
+
+.products .item .addtocart button {
+    position: relative;
+    height: 50px;
+    border: 0;
+    outline: 0;
+    margin-right: -30px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: var(--white);
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden;
+}
+.products .item .addtocart button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    transition: background-color .3s .2s;
+}
+.products .item .addtocart button:hover::before {
+    background-color: var(--white);
+}
+.products .item .addtocart span {
+    transform: translateX(-20px);
+    opacity: 0;
+    transition: transform .3s, opacity .3s;
+}
+.products .item:hover .addtocart button span {
+    transform: translateX(0);
+    opacity: 1;
+}
+.products .item .addtocart button i {
+    color: var(--white);
+    padding-right: 12px;
+    margin-left: 24px;
+    z-index: 10;
+}
+.products .item:hover .addtocart button i {
+   animation: motionArrow 1.5s infinite;
+}
+@keyframes motionArrow {
+    0%, 100% {transform: translateX(0);}
+    50% {transition: translateX(5px);}
+}
+.products .item .addtocart button:hover i {
+    color: var(--primary-color);
+    animation: runArrow .5s forwards;
+}
+@keyframes runArrow {
+    33% {
+        transform: translateX(50px);
+        opacity: 0;
+    }
+    66% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    
+}
+
+
+@media screen and (min-width: 568px) {
+    .products .item .image {
+        transition: transform .3s ;
+    }
+    .products .item .image img {
+        position: relative;
+    }
+    .products .item:hover .image {
+        transform: scale(1.25) translate3d(30%, -20%, 0);
+    }
+    .products .item .image::before {
+        content: '';
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        background-color: var(--primary-color);
+        border-radius: 50%;
+        top: 25%;
+        right: 0;
+        filter: blur(90px);
+        opacity: 0;
+        transition: opacity .3s;
+    }
+    .products .item:hover .image::before {
+        opacity: .75;
+    }
+    .products .item .size {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        flex-direction: column;
+        flex-basis: auto;
+        transform: translateY(-50%);
+        padding: 0 30px ;
+        overflow: hidden;
+    }
+    .products .item .size label {
+        transform: translateX(-100px);
+    }
+    .products .item:hover .size label {
+        transform: translateX(0);
+    }
+    .products .item .size label:nth-child(2) {
+        transition-delay: 50ms;
+    }
+    .products .item .size label:nth-child(4) {
+        transition-delay: 100ms;
+    }
+    .products .item .size label:nth-child(6) {
+        transition-delay: 150ms;
+    }
+    .products .item .size label:nth-child(8) {
+        transition-delay: 200ms;
+    }
+} 
